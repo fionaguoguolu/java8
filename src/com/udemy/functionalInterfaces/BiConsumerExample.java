@@ -8,15 +8,15 @@ import java.util.function.BiConsumer;
 
 public class BiConsumerExample {
 
-    public static void nameAndActivities() {
-        List<Student> studentList = StudentDatabase.getAllStudents();
+    static List<Student> studentList = StudentDatabase.getAllStudents();
 
-        BiConsumer<String, List<String>> biConsumer = (name, activities) ->
+    public static void nameAndActivities() {
+        BiConsumer<String, List<String>> printNameAndActivites = (name, activities) ->
             System.out.println("name: " + name + " activities: " + activities)
         ;
 
         studentList.forEach(
-                student -> biConsumer.accept(
+                student -> printNameAndActivites.accept(
                         student.getName(), student.getActivities()));
     }
 
